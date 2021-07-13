@@ -1,0 +1,29 @@
+.btn-default {
+  height: 25px;
+  width: 25px;
+  background: #fff;
+  border: 1px solid #334257;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-default:hover {
+  background-color: #ecefa4;
+}
+
+.btnX {
+  color: #e98580;
+}
+
+.btnX:focus {
+  border: 0px;
+}
+
+.btnO {
+  color: #39a2db;
+}
+
+.btn-win {
+  background: #93d9a3;
+}
