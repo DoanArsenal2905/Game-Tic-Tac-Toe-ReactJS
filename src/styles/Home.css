@@ -5,7 +5,7 @@
 
 input[type='number'] {
   width: 40px;
-  height: 30px;
+  height: 20px;
 }
 
 input[type='number']:focus {
@@ -26,4 +26,20 @@ input[type='number']:focus {
   flex: 2;
   border: 1px solid #e3e3e3;
   text-align: center;
+}
+
+.btn {
+  height: 25px;
+  background: #fff;
+  border: 1px solid #333;
+  cursor: pointer;
+  margin-left: 1px;
+}
+
+.btn:hover {
+  background: #e3e3e3;
+}
+
+.btn:focus {
+  outline: none;
 }

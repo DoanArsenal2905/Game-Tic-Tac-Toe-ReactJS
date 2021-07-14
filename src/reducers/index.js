@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import undoable from 'redux-undo'
 import { types, pieces } from '../constants'
 
 const inital_state = {
@@ -24,4 +24,7 @@ const main = (state = inital_state, action) => {
       return state
   }
 }
-export default combineReducers({ main })
+
+const undoRedo = undoable(main)
+
+export default undoRedo

@@ -3,7 +3,6 @@ export const isWin = (board, row, col, turn) => {
   let piece_win = []
   // check col win
   let index = col - 1
-
   while (index >= 0 && board[row][index] === turn) {
     piece_win.push([row, index])
     index--
@@ -15,7 +14,7 @@ export const isWin = (board, row, col, turn) => {
     index++
   }
 
-  if (piece_win.length >= 4) {
+  if (piece_win.length >= 3) {
     piece_win.push([row, col])
     return piece_win
   }
@@ -34,7 +33,7 @@ export const isWin = (board, row, col, turn) => {
     index++
   }
 
-  if (piece_win.length >= 4) {
+  if (piece_win.length >= 3) {
     piece_win.push([row, col])
     return piece_win
   }
@@ -68,7 +67,7 @@ export const isWin = (board, row, col, turn) => {
     col_index++
   }
 
-  if (piece_win.length >= 4) {
+  if (piece_win.length >= 3) {
     piece_win.push([row, col])
     return piece_win
   }
@@ -99,7 +98,7 @@ export const isWin = (board, row, col, turn) => {
     col_index--
   }
 
-  if (piece_win.length >= 4) {
+  if (piece_win.length >= 3) {
     piece_win.push([row, col])
     return piece_win
   }

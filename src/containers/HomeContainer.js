@@ -10,9 +10,11 @@ const HomeContainer = () => {
   const [is_win, set_is_win] = useState(-1)
   const [pieces_win, set_pieces_win] = useState(null)
 
-  const array_board = useSelector((state) => state.main.array_board)
-  const piece_current = useSelector((state) => state.main.piece_current)
-  const number_cell = useSelector((state) => state.main.number_cell)
+  const array_board = useSelector((state) => state.main.present.array_board)
+  const array_boards = useSelector((state) => state)
+  console.log(array_boards)
+  const piece_current = useSelector((state) => state.main.present.piece_current)
+  const number_cell = useSelector((state) => state.main.present.number_cell)
 
   const dispatch = useDispatch()
 

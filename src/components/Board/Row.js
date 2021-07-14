@@ -5,6 +5,7 @@ const Row = (props) => {
   const { elements, row, tick, pieces_win } = props
   const cells = elements.map((e, index) => (
     <Cell
+      key={index}
       data={e}
       row={row}
       col={index}

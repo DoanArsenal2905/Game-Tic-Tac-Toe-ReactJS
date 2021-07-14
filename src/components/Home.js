@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Row from './Board/Row'
 import '../styles/Home.css'
 import { Header } from './Header'
+import UndoRedo from './UndoRedo'
 
 const Home = (props) => {
   const [numbercell, set_numbercell] = useState(15)
@@ -83,9 +84,12 @@ const Home = (props) => {
                 <span>Hòa</span>
               ) : null}
             </p>
-            <button onClick={() => reset_map()} className="btn btn-info">
-              Reset
-            </button>
+            <div style={{ display: 'flex' }}>
+              <UndoRedo />
+              <button className="btn" onClick={() => reset_map()}>
+                Chơi lại
+              </button>
+            </div>
           </div>
         </div>
       )}
