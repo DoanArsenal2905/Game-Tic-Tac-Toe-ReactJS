@@ -14,7 +14,7 @@ const Cell = (props) => {
       : data === pieces.X
       ? class_css_x
       : class_css_normal
-  if (pieces_win != null) {
+  if (pieces_win !== null) {
     for (var i = 0; i < pieces_win.length; i++) {
       if (pieces_win[i][0] === row && pieces_win[i][1] === col)
         my_class_css = my_class_css.concat(' btn-win')
@@ -25,7 +25,7 @@ const Cell = (props) => {
     <button
       className={my_class_css}
       onClick={() => {
-        if (data === null) tick(row, col)
+        if (data === '') tick(row, col)
       }}
     >
       {data}

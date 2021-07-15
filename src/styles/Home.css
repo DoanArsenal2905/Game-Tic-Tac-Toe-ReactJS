@@ -22,7 +22,7 @@ input[type='number']:focus {
 }
 
 .information {
-  height: 160px;
+  height: 200px;
   flex: 2;
   border: 1px solid #e3e3e3;
   text-align: center;
@@ -33,7 +33,7 @@ input[type='number']:focus {
   background: #fff;
   border: 1px solid #333;
   cursor: pointer;
-  margin-left: 1px;
+  margin-left: 2px;
 }
 
 .btn:hover {

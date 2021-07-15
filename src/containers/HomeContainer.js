@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Home from '../components/Home'
-import { set_number_cell, init_array, tick, switch_piece } from '../actions'
+import {
+  set_number_cell,
+  init_array,
+  // tick,
+  // switch_piece,
+  test
+} from '../actions'
 import { pieces } from '../constants'
 import { isWin } from '../algorithm'
 
@@ -11,7 +17,7 @@ const HomeContainer = () => {
   const [pieces_win, set_pieces_win] = useState(null)
 
   const array_board = useSelector((state) => state.main.present.array_board)
-  const array_boards = useSelector((state) => state)
+  const array_boards = useSelector((state) => state.main.past)
   console.log(array_boards)
   const piece_current = useSelector((state) => state.main.present.piece_current)
   const number_cell = useSelector((state) => state.main.present.number_cell)
@@ -29,7 +35,9 @@ const HomeContainer = () => {
     // update board
     let array_new = [...array_board]
     array_new[row][col] = piece_current
-    dispatch(tick(array_new))
+
+    let check = false
+    // dispatch(tick(array_new))
 
     // check win
     const piece_win = isWin(array_new, row, col, piece_current)
@@ -40,8 +48,14 @@ const HomeContainer = () => {
       set_is_win(0)
     } else {
       // switch player
-      dispatch(switch_piece(piece_current === pieces.X ? pieces.O : pieces.X))
+      check = true
+      // dispatch(switch_piece(piece_current === pieces.X ? pieces.O : pieces.X))
     }
+
+    let a = array_new
+    let b = check && piece_current === pieces.X ? pieces.O : pieces.X
+
+    dispatch(test(a, b))
   }
 
   const resetBoard = () => {
@@ -52,7 +66,7 @@ const HomeContainer = () => {
           .map(() => Array(number_cell).fill(null))
       )
     )
-    dispatch(switch_piece(pieces.X))
+    // dispatch(switch_piece(pieces.X))
 
     set_count(0)
     set_is_win(-1)

@@ -1,13 +1,7 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import HomeContainer from './containers/HomeContainer'
+import Home from './components/Home'
 
-const App = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={HomeContainer} />
-    </Switch>
-  </BrowserRouter>
-)
+const App = () => {
+  return <Home />
+}
 
 export default App

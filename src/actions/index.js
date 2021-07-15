@@ -10,12 +10,26 @@ export const init_array = (array_board) => ({
   array_board
 })
 
-export const tick = (array_new) => ({
-  type: types.TICK,
-  array_new
-})
+// export const tick = (array_new) => ({
+//   type: types.TICK,
+//   array_new
+// })
 
 export const switch_piece = (data) => ({
   type: types.SWITCH_PIECE,
   data
+})
+
+// export const undo = () => ({
+//   type: 'UNDO',
+//   payload: null
+// })
+
+export const tickAndSwitch = (switchTurn, row, col) => ({
+  type: types.TICK_AND_SWITCH_PIECE,
+  payload: {
+    switchTurn,
+    row,
+    col
+  }
 })

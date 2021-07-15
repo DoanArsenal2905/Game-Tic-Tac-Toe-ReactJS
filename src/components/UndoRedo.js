@@ -1,28 +1,36 @@
 import React from 'react'
-import { ActionCreators as UndoActionCreators } from 'redux-undo'
 import { useDispatch, useSelector } from 'react-redux'
+import '../styles/Home.css'
 
 const UndoRedo = () => {
-  const canUndo = useSelector((state) => state.main.past.length > 0)
-  const canRedo = useSelector((state) => state.main.future.length > 0)
+  const canUndo = useSelector((state) => state.main.past.length)
+  const canRedo = useSelector((state) => state.main.future.length)
 
   const dispatch = useDispatch()
 
+  const handleUndo = () => {
+    dispatch({
+      type: 'UNDO',
+      payload: null
+    })
+  }
+
+  const handleRedo = () => {
+    dispatch({
+      type: 'REDO',
+      payload: null
+    })
+  }
+
   return (
-    <p>
-      <button
-        onClick={() => dispatch(UndoActionCreators.jump(-2))}
-        disabled={!canUndo}
-      >
+    <div style={{ marginBottom: 5 }}>
+      <button className="btn" onClick={() => handleUndo()} disabled={!canUndo}>
         Undo
       </button>
-      <button
-        onClick={() => dispatch(UndoActionCreators.jump(2))}
-        disabled={!canRedo}
-      >
+      <button className="btn" onClick={() => handleRedo()} disabled={!canRedo}>
         Redo
       </button>
-    </p>
+    </div>
   )
 }
 

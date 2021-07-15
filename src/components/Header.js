@@ -4,7 +4,7 @@ import '../styles/Header.css'
 export const Header = () => {
   return (
     <header>
-      <p>Game Tic Tac Toe</p>
+      <p>Game Cờ Caro</p>
     </header>
   )
 }

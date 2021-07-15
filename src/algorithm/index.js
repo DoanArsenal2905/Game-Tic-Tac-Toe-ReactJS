@@ -3,6 +3,10 @@ export const isWin = (board, row, col, turn) => {
   let piece_win = []
   // check col win
   let index = col - 1
+  // console.log(board)
+  // console.log(row)
+  // console.log(col)
+  // console.log(turn)
   while (index >= 0 && board[row][index] === turn) {
     piece_win.push([row, index])
     index--

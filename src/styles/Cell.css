@@ -29,3 +29,8 @@
 .btn-win {
   background: #93d9a3;
 }
+
+.span {
+  height: 1px;
+  background: black;
+}
