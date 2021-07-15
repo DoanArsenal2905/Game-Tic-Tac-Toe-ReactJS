@@ -4,30 +4,22 @@ import Row from './Board/Row'
 import '../styles/Home.css'
 import { Header } from './Header'
 import UndoRedo from './UndoRedo'
-import {
-  init_array,
-  set_number_cell,
-  switch_piece,
-  tickAndSwitch
-} from '../actions'
+import { init_array, switch_piece, tickAndSwitch } from '../actions'
 import { isWin } from '../algorithm'
 import { pieces } from '../constants'
 
-const Home = (props) => {
-  const [numbercell, set_numbercell] = useState(0)
-  const presentState = useSelector((state) => state.main.present)
-  const [count, set_count] = useState(0)
-  const [is_win, set_is_win] = useState(-1)
-  const [pieces_win, set_pieces_win] = useState(null)
-  const [player, setPlayer] = useState(
-    presentState.piece_current === 'O' ? true : false
-  )
-
+const Home = () => {
   const array_board = useSelector((state) => state.main.present.array_board)
   const piece_current = useSelector((state) => state.main.present.piece_current)
   const number_cell = useSelector((state) => state.main.present.number_cell)
 
   const dispatch = useDispatch()
+
+  const [numbercell, set_numbercell] = useState(15)
+  const [count, set_count] = useState(0)
+  const [is_win, set_is_win] = useState(-1)
+  const [pieces_win, set_pieces_win] = useState(null)
+  const [player, setPlayer] = useState(piece_current === 'O' ? true : false)
 
   const handleOnChange = (e) => set_numbercell(e.target.value)
   const handleKeyPress = (e) => {
@@ -40,7 +32,7 @@ const Home = (props) => {
         alert('To thế? Nhập lại đê!')
         return
       }
-      dispatch(set_number_cell(numbercell))
+      dispatch(init_array(numbercell))
     }
   }
 
@@ -56,18 +48,8 @@ const Home = (props) => {
 
     // update board
     let array_new = [...array_board]
-    // array_new[row][col] = piece_current
-
-    let check = false
-
-    // dispatch(tick(array_new))
-
-    // check win
-    // const piece_win = isWin(array_new, row, col, piece_current)
 
     const piece_win = isWin(array_new, row, col, currentPiece)
-
-    console.log(piece_win)
 
     if (piece_win.length > 0) {
       set_is_win(1)
@@ -79,19 +61,16 @@ const Home = (props) => {
   }
 
   const resetBoard = () => {
-    dispatch(
-      init_array(
-        Array(number_cell)
-          .fill(null)
-          .map(() => Array(number_cell).fill(null))
-      )
-    )
+    dispatch(init_array(numbercell))
     dispatch(switch_piece(pieces.X))
 
     set_count(0)
     set_is_win(-1)
     set_pieces_win(null)
+    setPlayer(false)
   }
+
+  console.log(count)
 
   return (
     <div>
@@ -122,7 +101,9 @@ const Home = (props) => {
           </div>
           <div className="information">
             <h3>Thông tin</h3>
-            <p>Người đang đánh: {piece_current}</p>
+            <p>
+              Người đang đánh: {piece_current === 'X' && count > 0 ? 'O' : 'X'}
+            </p>
             <p>
               {' '}
               Kết quả:{' '}

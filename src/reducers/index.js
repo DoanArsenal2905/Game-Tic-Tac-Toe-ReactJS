@@ -13,7 +13,7 @@ const inital_state = {
   }
 }
 const main = (state = inital_state, action) => {
-  console.log(state)
+  console.log(state.present)
 
   switch (action.type) {
     case types.SET_NUMBER_CELL: {
@@ -21,14 +21,23 @@ const main = (state = inital_state, action) => {
     }
 
     case types.INIT_ARRAY: {
-      return { ...state, array_board: action.array_board }
+      const newState = _.cloneDeep(state)
+      const array_new = Array(parseInt(action.number_cell))
+        .fill('')
+        .map(() => Array(parseInt(action.number_cell)).fill(''))
+
+      const newPresent = {
+        ...state.present,
+        array_board: array_new
+      }
+
+      return {
+        ...newState,
+        present: newPresent
+      }
     }
     case types.SWITCH_PIECE: {
-      console.log(action.data)
       return { ...state, piece_current: action.data }
-    }
-    case types.TICK: {
-      return { ...state, array_board: action.array_new }
     }
 
     case types.TICK_AND_SWITCH_PIECE: {

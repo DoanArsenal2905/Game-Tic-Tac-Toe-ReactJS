@@ -5,25 +5,15 @@ export const set_number_cell = (number_cell) => ({
   number_cell
 })
 
-export const init_array = (array_board) => ({
+export const init_array = (number_cell) => ({
   type: types.INIT_ARRAY,
-  array_board
+  number_cell
 })
-
-// export const tick = (array_new) => ({
-//   type: types.TICK,
-//   array_new
-// })
 
 export const switch_piece = (data) => ({
   type: types.SWITCH_PIECE,
   data
 })
-
-// export const undo = () => ({
-//   type: 'UNDO',
-//   payload: null
-// })
 
 export const tickAndSwitch = (switchTurn, row, col) => ({
   type: types.TICK_AND_SWITCH_PIECE,
