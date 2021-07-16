@@ -25,7 +25,10 @@ const Home = () => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       if (numbercell === null) return
-      else if (parseInt(numbercell) < 10) {
+      else if (numbercell === '') {
+        alert('Cần nhập lại kích thước bàn cờ!')
+        return
+      } else if (parseInt(numbercell) < 10) {
         alert('Bé thế? Nhập lại đê!')
         return
       } else if (parseInt(numbercell) > 50) {
@@ -48,9 +51,7 @@ const Home = () => {
 
     // update board
     let array_new = [...array_board]
-
     const piece_win = isWin(array_new, row, col, currentPiece)
-
     if (piece_win.length > 0) {
       set_is_win(1)
       set_pieces_win(piece_win)
@@ -70,8 +71,6 @@ const Home = () => {
     setPlayer(false)
   }
 
-  console.log(count)
-
   return (
     <div>
       <Header />
@@ -89,7 +88,10 @@ const Home = () => {
             />
             <span> (Min: 10, Max: 50, Default: 15)</span>
             {array_board.map((e, index) => (
-              <div style={{ display: 'flex', height: 25 }} key={index}>
+              <div
+                style={{ display: 'flex', height: 30, marginTop: -1 }}
+                key={index}
+              >
                 <Row
                   elements={e}
                   tick={(row, col) => tickBoard(row, col)}

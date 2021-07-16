@@ -13,8 +13,6 @@ const inital_state = {
   }
 }
 const main = (state = inital_state, action) => {
-  console.log(state.present)
-
   switch (action.type) {
     case types.SET_NUMBER_CELL: {
       return { ...state, number_cell: parseInt(action.number_cell) }
